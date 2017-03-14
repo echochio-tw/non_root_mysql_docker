@@ -31,10 +31,10 @@ RUN echo "fi" >> /home/mysql/start.sh
 RUN echo "}" >> /home/mysql/start.sh
 RUN echo "stop()" >> /home/mysql/start.sh
 RUN echo "{" >> /home/mysql/start.sh
-RUN echo "kill -9 `cat /home/mysql/sql_data/*.pid`" >> /home/mysql/start.sh
+RUN echo "kill -9 \`cat /home/mysql/sql_data/*.pid\`" >> /home/mysql/start.sh
 RUN echo "}" >> /home/mysql/start.sh
 RUN echo "while true; do" >> /home/mysql/start.sh
-RUN echo "if ! kill -0 `cat /home/mysql/sql_data/mysqld_safe.pid` > /dev/null 2>&1; then "  >> /home/mysql/start.sh
+RUN echo "if ! kill -0 \`cat /home/mysql/sql_data/mysqld_safe.pid\` > /dev/null 2>&1; then "  >> /home/mysql/start.sh
 RUN echo "stop" >> /home/mysql/start.sh
 RUN echo "start" >> /home/mysql/start.sh
 RUN echo "fi" >> /home/mysql/start.sh
