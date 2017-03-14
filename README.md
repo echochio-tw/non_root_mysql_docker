@@ -1,7 +1,7 @@
 # non_root_mysql_docker
 
 ```
-# https://github.com/chio-nzgft/non_root_mysql_docker.git
+# git clone https://github.com/echochio-tw/non_root_mysql_docker.git
 # docker build -t non_root_mysql .
 
 ```
