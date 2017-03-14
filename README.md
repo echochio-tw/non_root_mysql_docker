@@ -11,7 +11,7 @@ Run host (192.168.0.70)
 # docker run -d -P  --privileged=true -p 192.168.0.70:3306:3306 --name=non_root_mysql non_root_mysql 
 ```
 
-OR Run in Extend DATA-STORE (must have permission)
+OR Run in Extend DATA-STORE (permiss for non root user access )
 
 ```
 # docker run -d -P -v /data:/home/mysql/sql_data --privileged=true -p 192.168.0.70:3306:3306 --name=non_root_mysql non_root_mysql 
