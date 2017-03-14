@@ -22,7 +22,7 @@ RUN echo "flush privileges;" >> /home/mysql/pass.sql
 RUN echo "#!/bin/bash" > /home/mysql/start.sh
 RUN echo "start()" >> /home/mysql/start.sh
 RUN echo "{" >> /home/mysql/start.sh
-RUN echo "if [ ! -d "/home/mysql/sql_dat/mysql" ]; then" >> /home/mysql/start.sh
+RUN echo "if [ ! -d "/home/mysql/sql_data/mysql" ]; then" >> /home/mysql/start.sh
 RUN echo "cd /home/mysql;./bin/mysqld --user=mysql --basedir=/home/mysql --datadir=/home/mysql/sql_data --initialize-insecure" >> /home/mysql/start.sh
 RUN echo "cd /home/mysql;./bin/mysqld_safe --defaults-file=/home/mysql/my.cnf  --init-file=/home/mysql/pass.sql &" >> /home/mysql/start.sh
 RUN echo "else" >> /home/mysql/start.sh
