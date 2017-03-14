@@ -12,7 +12,9 @@ Run host (192.168.0.70)
 ```
 
 login mysql ( password in Dockerfile)
+
 user : root
+
 pass : rootpass
 
 ```
