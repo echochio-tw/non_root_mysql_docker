@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 RUN apt-get update && apt -y dist-upgrade
-RUN apt-get install -y wget
+RUN apt-get install -y wget libaio1
 RUN useradd mysql
 WORKDIR /home
 RUN wget https://downloads.mysql.com/archives/get/file/mysql-5.7.16-linux-glibc2.5-x86_64.tar.gz
