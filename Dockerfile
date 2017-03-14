@@ -20,13 +20,24 @@ RUN echo "update mysql.user set authentication_string=password('rootpass') , pas
 RUN echo "update mysql.user set  host='%' where user='root';" >> /home/mysql/pass.sql
 RUN echo "flush privileges;" >> /home/mysql/pass.sql
 RUN echo "#!/bin/bash" > /home/mysql/start.sh
+RUN echo "start()" >> /home/mysql/start.sh
+RUN echo "{" >> /home/mysql/start.sh
 RUN echo "if [ ! -d "/home/mysql/sql_dat/mysql" ]; then" >> /home/mysql/start.sh
 RUN echo "cd /home/mysql;./bin/mysqld --user=mysql --basedir=/home/mysql --datadir=/home/mysql/sql_data --initialize-insecure" >> /home/mysql/start.sh
 RUN echo "cd /home/mysql;./bin/mysqld_safe --defaults-file=/home/mysql/my.cnf  --init-file=/home/mysql/pass.sql &" >> /home/mysql/start.sh
 RUN echo "else" >> /home/mysql/start.sh
 RUN echo "cd /home/mysql;./bin/mysqld_safe --defaults-file=/home/mysql/my.cnf &" >> /home/mysql/start.sh
 RUN echo "fi" >> /home/mysql/start.sh
+RUN echo "}" >> /home/mysql/start.sh
+RUN echo "stop()" >> /home/mysql/start.sh
+RUN echo "{" >> /home/mysql/start.sh
+RUN echo "kill -9 `cat /home/mysql/sql_data/*.pid`" >> /home/mysql/start.sh
+RUN echo "}" >> /home/mysql/start.sh
 RUN echo "while true; do" >> /home/mysql/start.sh
+RUN echo "if ! kill -0 `cat /home/mysql/sql_data/mysqld_safe.pid` > /dev/null 2>&1; then "  >> /home/mysql/start.sh
+RUN echo "stop" >> /home/mysql/start.sh
+RUN echo "start" >> /home/mysql/start.sh
+RUN echo "fi" >> /home/mysql/start.sh
 RUN echo "sleep 5" >> /home/mysql/start.sh
 RUN echo "done" >> /home/mysql/start.sh
 RUN chmod +x /home/mysql/start.sh
